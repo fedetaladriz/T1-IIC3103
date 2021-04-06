@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-auto">
+            <h2>{{character.name}}</h2>
+            <p>"{{character.nickname}}"</p>
+            <img src="{{character.img}}" alt="Hi!" height="400">
+        </div>
+
+        <div class="col" style="margin-top: 80px;">
+
+            <p><b>Portrayed:</b> {{character.portrayed}}</p>
+            
+            <p><b>Occupations:</b></p>
+            <ul>
+                {% for occupation in character.occupation %}
+                    <li>{{occupation}}</li>
+                {% endfor %}
+            </ul>
+
+            <p><b>Status: </b>{{character.status}}</p>
+            
+            
+            <p><b>Appearances:</b></p> 
+            <div class="row">
+                <div class="col" >
+                    {% if character.appearance %}
+                        <p>Breaking bad:</p> 
+                        <ul>
+                            {% for season in character.appearance %}
+                                <li><a href="/breaking_bad/{{season}}"> Season {{season}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    
+                    {% else %}
+                        No appearances in Breaking Bad series!
+                        <br>
+                        <br>
+                    {% endif %}
+                </div>
+
+                <div class="col" style="border-left: 2px solid #28A745;">
+                    {% if character.better_call_saul_appearance %}
+                        Better call Saul:
+                        <ul>
+                            {% for season in character.better_call_saul_appearance %}
+                                <li><a href="/better_call_saul/{{season}}"> Season {{season}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    
+                    {% else %}
+                        No appearances in Better call Saul series!
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col" style="margin-top: 80px;">
+            <p><b>Quotes:</b></p>
+            {% if quotes %}
+            <ul>
+                {% for quote in quotes %}
+                    <li>{{quote.quote}}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No Quotes found!</p>
+            {% endif %}
+        
+        </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+

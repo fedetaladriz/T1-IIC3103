@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col" style="text-align: center;">
+
+                <h2>Breaking Bad</h2>
+                <img src="https://occ-0-1068-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABeq9Fg04r6qPCr1dq7VKOglPPuluLbGBoyy60tgKnh9KsXWh5Y2VaY7jDWhrl4QQV1NhshZxCtLJrM_3V_WJc5J0p-eW.jpg?r=776" alt="" height="250">
+
+                <ul class="list-group" style="margin-top: 10px">
+                    {% for season in breaking_bad %}
+                        <li class="list-group-item"><a href="/breaking_bad/{{forloop.counter}}">Season {{season}}</a></li>
+                    {% endfor %}
+                </ul>   
+
+            </div>
+
+            <div class="col" style="text-align: center;">
+
+                <h2 >Better Call Saul</h2>
+                <img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2018/10/10/15391688976050.jpg" alt="" height="250">
+
+                <ul class="list-group" style="margin-top: 10px;">
+                    {% for season in better_call_saul %}
+                        <li class="list-group-item"><a href="/better_call_saul/{{forloop.counter}}">Season {{season}}</a></li>
+                    {% endfor %}
+                </ul>  
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

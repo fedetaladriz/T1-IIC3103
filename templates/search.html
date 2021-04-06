@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<div class="container" style="margin-top: 50px;">
+    <h3>Search results for "{{s}}"</h3>
+    {% if not s %}
+        <p>Error: Empty input!</p>
+    {% else %}
+
+        {% if result %}
+            <table class="table"> 
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Nickname</th>
+                    <th>Occupation</th>
+                    <th>Series</th>
+                    <th>Portrayed</th>
+                </tr>
+                {% for character in result %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><a href="/characters/{{character.name}}"> {{character.name}}</a></td>
+                        <td>{{character.nickname}}</td>
+                        <td>
+                            <ul>
+                                {% for occupation in character.occupation %}
+                                    <li>{{occupation}}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{character.category}}</td>
+                        <td>{{character.portrayed}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% else %}
+            No results found!
+        {% endif %}
+
+    {% endif %}
+
+</div>
+{% endblock %}
